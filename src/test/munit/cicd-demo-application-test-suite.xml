@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="cicd-demo-application-test-suite.xml" />
+	<munit:test name="cicd-demo-application-test-suite-cicd-demo-applicationFlowTest" doc:id="189af2e4-7c87-44e6-a463-e868a032d6fd" description="Test">
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to cicd-demo-applicationFlow" doc:id="86839076-2ece-444e-a7c0-547a9c9242f1" name="cicd-demo-applicationFlow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:verify-call doc:name="Verify call: DW Output" doc:id="8720d0c1-a82f-4321-b2a1-886443d44df1" processor="ee:transform">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="DW Output" attributeName="doc:name" />
+					<munit-tools:with-attribute whereValue="4158a4d7-a64f-46ee-bdca-6522404ae33c" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+
+
+</mule>
